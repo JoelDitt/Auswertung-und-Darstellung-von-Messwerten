@@ -26,14 +26,14 @@ sigma = np.std(N_i, ddof=1)
 # Sortiere die Messwerte
 sorted_N_i = np.sort(N_i)
 
-# Berechne die empirische kumulative HÑufigkeitsverteilung (Summenverteilung)
+# Berechne die empirische kumulative H‚Äûufigkeitsverteilung (Summenverteilung)
 cumulative_frequency = np.arange(1, n + 1) / n  # Summenverteilung (CDF)
 
-# Berechne die theoretische Gau·sche Verteilungsfunktion W(N)
+# Berechne die theoretische Gau√°sche Verteilungsfunktion W(N)
 x_gauss = np.linspace(mu-250,mu+250, 1000)  # Wertebereich
-cdf_gauss = norm.cdf(x_gauss, mu, sigma)  # Gau·sche CDF
+cdf_gauss = norm.cdf(x_gauss, mu, sigma)  # Gau√°sche CDF
 
-# HinzufÅgen der Linien
+# Hinzuf¬Ågen der Linien
 plt.axhline(y=0.5, color='blue',alpha=0.7, linestyle='-', label=r'Erwartungswert $\mu$')
 plt.axhline(y=0.84132, color='blue',alpha=0.7, linestyle='--', label=r'$\mu\pm\sigma$')
 plt.axhline(y=0.5-0.34132, color='blue',alpha=0.7, linestyle='--')
@@ -41,7 +41,7 @@ plt.axvline(x=mu, color='blue',alpha=0.7, linestyle='-')
 plt.axvline(x=mu + sigma, color='blue',alpha=0.7, linestyle='--')
 plt.axvline(x=mu - sigma, color='blue',alpha=0.7, linestyle='--')
 
-# Beschriftungen hinzufÅgen und leicht verschieben
+# Beschriftungen hinzuf¬Ågen und leicht verschieben
 plt.text(mu, -0.1, r'$\mu$', color='blue', fontsize=15, ha='center', va='bottom')
 plt.text(mu + sigma, -0.1, r'$\mu + \sigma$', color='blue', fontsize=15, ha='center', va='bottom')
 plt.text(mu - sigma, -0.1, r'$\mu - \sigma$', color='blue', fontsize=15, ha='center', va='bottom')
@@ -52,22 +52,22 @@ plt.text(3950, 0.15868, '16%', color='blue', fontsize=15, ha='right', va='center
 # Plot der gemessenen Summenverteilung
 plt.step(sorted_N_i, cumulative_frequency, where='post', label='Gemessene Summenverteilung', color='red')
 
-# Plot der theoretischen Gau·schen Verteilungsfunktion
+# Plot der theoretischen Gau√°schen Verteilungsfunktion
 plt.plot(x_gauss, cdf_gauss, label=rf'$W(N, \mu={mu:.2f}, \sigma={sigma:.2f})$'.replace('.', ','), color='blue')
 
 # Raster und Titel
 plt.grid(True, linestyle='--', linewidth=0.5, alpha=0.7)
 
-# Titel und Achsenbeschriftungen mit angepasster Schriftgrî·e
-plt.title('Vergleich der gemessenen Summenverteilung mit der Gau·schen Verteilungsfunktion', fontsize=35)
+# Titel und Achsenbeschriftungen mit angepasster Schriftgr‚Äù√°e
+plt.title('Vergleich der gemessenen Summenverteilung mit der Gau√°schen Verteilungsfunktion', fontsize=35)
 plt.xlabel(r'$N_\text{i} \, \text{ in Impulsen pro 12s}$', fontsize=25)
-plt.ylabel('Kummulierte HÑufigkeit', fontsize=25)
+plt.ylabel('Kummulierte H‚Äûufigkeit', fontsize=25)
 
-# Anpassung der Schriftgrî·e der Ticks
+# Anpassung der Schriftgr‚Äù√°e der Ticks
 plt.xticks(fontsize=15)
 plt.yticks(fontsize=15)
 
-# Legende mit angepasster Schriftgrî·e
+# Legende mit angepasster Schriftgr‚Äù√°e
 plt.legend(fontsize=25)
 
 plt.xlim([3950,4250])
